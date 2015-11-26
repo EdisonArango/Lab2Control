@@ -1,0 +1,97 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="my-resultado">
+  <template>
+    <style include="shared-styles"></style>
+    <style is="custom-style">
+  		
+  		paper-fab {
+  			position: absolute;
+  			top: 5px;
+  			left: 5px;
+  			z-index: 100;
+  		}
+
+  		google-chart {
+		  height: 500px;
+		  width: 100%;
+		}
+
+		span{
+			font-size: 35px;
+    		color: #bdbdbd;
+		}
+
+    </style>
+    	<!-- <paper-fab on-click="back" icon="arrow-back" class="indigo"></paper-fab> -->
+      <paper-material elevation="1">
+     	<iron-grid>
+     		<div class="s12 m4">
+	     		<table>
+	     			<tbody>
+	     				<tr>
+	     					<td>
+						        <h4>El tiempo que tardará el tanque final en llenarse es:</h4>
+					    	</td>
+					    	<td>
+					    		<span>{{resultado}}</span>
+					    	</td>
+	     				</tr>
+	     				<tr>
+	     					<td>
+						        <h4>El tiempo que tardará el tanque A en vaciarse es:</h4>
+					    	</td>
+					    	<td>
+					    		<span>{{resultado}}</span>
+					    	</td>
+	     				</tr>
+			    	</tbody>
+		    	</table>
+	        </div>
+	       	<div class="s12 m8">
+		        <google-chart
+			    type='area'
+			    options='{"title": "Litros en el tiempo"}'
+			    cols='[{"label": "Tiempo", "type": "number"},{"label": "Litros", "type": "number"}]'
+			    rows='{{datosGrafica}}'>
+			  	</google-chart>
+		    </div>
+		</iron-grid>
+		<paper-button tabindex="0" on-click="back" raised class="colorful custom"><iron-icon icon="arrow-back"></iron-icon>Volver</paper-button>
+      </paper-material>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+      
+      Polymer({
+        is: 'my-resultado',
+
+        properties: {
+	        resultado: {
+	         	type: Number,
+	          	value: 0,
+	          	notify: true
+	        },
+	        datosGrafica: {
+	        	type: Array,
+	        	value: function(){
+	        		var array = [];
+	        		for (var i = 0; i < 50; i++) {
+	        			 array.push([i,i]);
+	        		}
+	        		return array;
+	        	},
+	        	notify: true
+	        }
+        },
+        back: function(){
+        	document.querySelector('#pageInit').redirect("/");
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

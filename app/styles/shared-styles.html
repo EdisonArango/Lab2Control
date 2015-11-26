@@ -1,0 +1,382 @@
+<!-- shared styles for all elements and index.html -->
+<dom-module id="shared-styles">
+  <template>
+    <style>
+      .page-title {
+        @apply(--paper-font-display2);
+      }
+
+      paper-button.colorful {
+        color: #4285f4;
+      }
+
+      paper-button[raised].colorful {
+        background: #4285f4;
+        color: #fff;
+      }
+
+      paper-button.blue {
+        color: var(--paper-light-blue-500);
+        --paper-button-flat-focus-color: var(--paper-light-blue-50);
+      }
+      paper-button.blue:hover {
+        background: var(--paper-light-blue-50);
+      }
+
+      paper-material {
+        border-radius: 2px;
+        padding: 16px 0 16px 0;
+        width: calc(98.66% - 16px);
+        margin: 16px auto;
+        background: white;
+      }
+
+      @media (max-width: 600px) {
+        .page-title {
+          font-size: 24px!important;
+        }
+
+        paper-material {
+          --menu-container-display: none;
+          width: calc(97.33% - 32px);
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      }
+
+      @media (min-width: 601px) {
+
+        paper-material {
+          width: calc(98% - 46px);
+          margin-bottom: 32px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+      }
+
+      /*Colors */
+        .red {
+          background: var(--paper-red-400);
+        }
+
+        .red .divcolor {
+          background: var(--paper-red-700);
+        }
+
+        .purple {
+          background: var(--paper-purple-400);
+        }
+
+        .purple .divcolor {
+          background: var(--paper-purple-700);
+        }
+
+        .deep-purple {
+          background: var(--paper-deep-purple-400);
+        }
+
+        .deep-purple .divcolor {
+          background: var(--paper-deep-purple-700);
+        }
+
+        .indigo {
+          background: var(--paper-indigo-400);
+        }
+
+        .indigo .divcolor {
+          background: var(--paper-indigo-700);
+        }
+
+        .yellow {
+          background: var(--paper-yellow-400);
+        }
+
+        .yellow .divcolor {
+          background: var(--paper-yellow-700);
+        }
+
+        .blue {
+          background: var(--paper-blue-400);
+        }
+
+        .blue .divcolor {
+          background: var(--paper-blue-700);
+        }
+
+        .light-blue {
+          background: var(--paper-light-blue-400);
+        }
+
+        .light-blue .divcolor {
+          background: var(--paper-light-blue-700);
+        }
+
+        .cyan {
+          background: var(--paper-cyan-400);
+        }
+
+        .cyan .divcolor {
+          background: var(--paper-cyan-700);
+        }
+
+        .pink {
+          background: var(--paper-pink-400);
+        }
+
+        .pink .divcolor {
+          background: var(--paper-pink-700);
+        }
+
+        .teal {
+          background: var(--paper-teal-400);
+        }
+
+        .teal .divcolor {
+          background: var(--paper-teal-700);
+        }
+
+        .green {
+          background: var(--paper-green-400);
+        }
+
+        .green .divcolor {
+          background: var(--paper-green-700);
+        }
+
+        .light-green {
+          background: var(--paper-light-green-400);
+        }
+
+        .light-green .divcolor {
+          background: var(--paper-light-green-700);
+        }
+
+        .lime {
+          background: var(--paper-lime-400);
+        }
+
+        .lime .divcolor {
+          background: var(--paper-lime-700);
+        }
+
+        .orange {
+          background: var(--paper-orange-400);
+        }
+
+        .orange .divcolor {
+          background: var(--paper-orange-700);
+        }
+
+        .deep-orange {
+          background: var(--paper-deep-orange-400);
+        }
+
+        .deep-orange .divcolor {
+          background: var(--paper-deep-orange-700);
+        }
+
+        .amber {
+          background: var(--paper-amber-400);
+        }
+
+        .amber .divcolor {
+          background: var(--paper-amber-700);
+        }
+
+        .brown {
+          background: var(--paper-brown-400);
+        }
+
+        .brown .divcolor {
+          background: var(--paper-brown-700);
+        }
+
+        .grey {
+          background: var(--paper-grey-400);
+        }
+
+        .grey .divcolor {
+          background: var(--paper-grey-700);
+        }
+
+        .blue-grey {
+          background: var(--paper-blue-grey-400);
+        }
+
+        .blue-grey .divcolor {
+          background: var(--paper-blue-grey-700);
+        }
+
+        .white {
+          background: var(--paper-white);
+        }
+
+        .white .divcolor {
+          background: var(--paper-grey-500);
+        }
+
+        :root {
+    --dark-primary-color: #303F9F;
+    --default-primary-color: #3F51B5;
+    --light-primary-color: #C5CAE9;
+    --text-primary-color: #ffffff; /*text/icons*/
+    --accent-color: #FF4081;
+    --primary-background-color: #c5cae9;
+    --primary-text-color: #212121;
+    --secondary-text-color: #727272;
+    --disabled-text-color: #bdbdbd;
+    --divider-color: #B6B6B6;
+
+    /* Components */
+
+    /* paper-drawer-panel */
+    --drawer-menu-color: #ffffff;
+    --drawer-border-color: 1px solid #ccc;
+    --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+
+    /* paper-menu */
+    --paper-menu-background-color: #fff;
+    --menu-link-color: #111111;
+  }
+
+  /* General styles */
+
+  #drawerToolbar {
+    color: var(--secondary-text-color);
+    background-color: var(--drawer-menu-color);
+    border-bottom: var(--drawer-toolbar-border-color);
+  }
+
+  paper-scroll-header-panel {
+    height: 100%;
+  }
+
+  paper-material {
+    border-radius: 2px;
+    /*height: 100%;*/
+    padding: 16px 0 16px 0;
+    width: calc(98.66% - 16px);
+    margin: 16px auto;
+    background: white;
+  }
+
+  paper-menu iron-icon {
+    margin-right: 33px;
+    opacity: 0.54;
+  }
+
+  .paper-menu > .iron-selected {
+    color: var(--default-primary-color);
+  }
+
+  paper-menu a {
+    text-decoration: none;
+    color: var(--menu-link-color);
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  paper-toolbar.tall .app-name {
+    font-size: 40px;
+    font-weight: 300;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  #mainToolbar .middle-container  {
+    height: 100%;
+    margin-left: 48px;
+  }
+
+  #mainToolbar:not(.tall) .middle {
+    font-size: 18px;
+    padding-bottom: 0;
+  }
+
+  #mainToolbar .bottom {
+    margin-left: 48px;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
+  /* Height of the scroll area */
+  .content {
+    height: 100%;
+  }
+
+  neon-animated-pages {
+    height: 100%;
+  }
+
+  /* Breakpoints */
+
+  /* Small */
+  @media (max-width: 600px) {
+
+    paper-material {
+      --menu-container-display: none;
+      width: calc(97.33% - 32px);
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    paper-toolbar.tall .app-name {
+      font-size: 24px;
+      font-weight: 400;
+    }
+
+    #drawer .paper-toolbar {
+      margin-left: 16px;
+    }
+
+    #overlay {
+      min-width: 360px;
+    }
+
+    .bg {
+      background: white;
+    }
+
+  }
+
+  /* Tablet+ */
+  @media (min-width: 601px) {
+
+    paper-material {
+      width: calc(98% - 46px);
+      margin-bottom: 32px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    #drawer.paper-drawer-panel > [drawer] {
+      border-right: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    iron-pages {
+      padding: 48px 62px;
+    }
+
+  }
+
+    </style>
+  </template>
+</dom-module>

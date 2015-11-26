@@ -1,0 +1,123 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="my-config">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-slider.azul {
+      --paper-slider-knob-color: var(--paper-light-blue-500);
+      --paper-slider-active-color: var(--paper-light-blue-500);
+      }
+
+      paper-slider.rojo {
+        --paper-slider-knob-color: var(--paper-red-500);
+        --paper-slider-active-color: var(--paper-red-500);
+      }
+
+      paper-slider.verde {
+        --paper-slider-knob-color: var(--paper-green-500);
+        --paper-slider-active-color: var(--paper-green-500);
+      }
+
+      @media (max-width: 600px) {
+        paper-slider{
+          width: 100%;
+        }
+      }
+
+      @media (min-width: 601px) {
+
+        paper-slider{
+          width: 50%;
+        }
+
+      }
+
+      .floated-label-placeholder{
+        height: 0px;
+      }
+
+      paper-button{
+        float: right;
+      }
+
+
+    </style>
+
+      <paper-material elevation="1">
+        <h2 class="page-title">Ingrese los porcentajes de apertura de los tanques</h2>
+        <div class="vertical-section">
+            <div>
+              <div>Tanque A</div>
+              <paper-slider id="sliderA" class="rojo" value="{{porcentajeTanqueA}}" max="100" editable></paper-slider>
+            </div>
+            <div>
+              <div>Tanque B</div>
+              <paper-slider id="sliderB" class="verde" value="{{porcentajeTanqueB}}" max="100" editable></paper-slider>
+            </div>
+            <div>
+              <div>Tanque Final</div>
+              <paper-slider id="sliderC" class="azul" value="{{porcentajeTanqueFinal}}" max="100" editable></paper-slider>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div style="display: block;height: 50px;">
+          <paper-button tabindex="0" on-click="toResultado" raised class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+        </div>
+      </paper-material>
+      <paper-material elevation="1">
+        <p class="paper-font-body2">Realizado por: <span>160002900 Edison Arango</span>, <span>160002911 Carlos Gonzalez</span>, <span>160002928 Juan Perez</span></p>
+      </paper-material>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+      
+      Polymer({
+        is: 'my-config',
+
+        properties: {
+          porcentajeTanqueA: {
+            type: Number,
+            // reflectToAttribute: true,
+            notify: true
+          },
+          porcentajeTanqueB: {
+            type: Number,
+            // reflectToAttribute: true,
+            notify: true
+          },
+          porcentajeTanqueFinal: {
+            type: Number,
+            // reflectToAttribute: true,
+            notify: true
+          }
+        },
+        ready: function(){
+          var self = this;
+          this.$.sliderA.addEventListener('value-change', function() {
+            self.porcentajeTanqueA = self.$.sliderA.value;
+          });
+          this.$.sliderB.addEventListener('value-change', function() {
+            self.porcentajeTanqueB = self.$.sliderB.value;
+          });
+          this.$.sliderC.addEventListener('value-change', function() {
+            self.porcentajeTanqueFinal = self.$.sliderC.value;
+          });
+        },
+        toResultado: function(){
+          document.querySelector('#pageInit').obtenerResultado();
+          document.querySelector('#pageInit').redirect("/resultado");
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
