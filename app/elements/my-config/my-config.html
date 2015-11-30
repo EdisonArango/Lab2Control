@@ -24,20 +24,6 @@
         --paper-slider-active-color: var(--paper-green-500);
       }
 
-      @media (max-width: 600px) {
-        paper-slider{
-          width: 100%;
-        }
-      }
-
-      @media (min-width: 601px) {
-
-        paper-slider{
-          width: 50%;
-        }
-
-      }
-
       .floated-label-placeholder{
         height: 0px;
       }
@@ -46,29 +32,116 @@
         float: right;
       }
 
+      .divider{
+        border-bottom: 1px solid #dcdcdc;
+      }
+
+      .titulo{
+        font-weight: 600;
+      }
+
+      .texto-pequeno{
+        color: #727272;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+
+      .no-spaces{
+        margin: 0;
+        padding: 0;
+      }
 
     </style>
 
       <paper-material elevation="1">
-        <h2 class="page-title">Ingrese los porcentajes de apertura de los tanques</h2>
-        <div class="vertical-section">
-            <div>
-              <div>Tanque A</div>
-              <paper-slider id="sliderA" class="rojo" value="{{porcentajeTanqueA}}" max="100" editable></paper-slider>
-            </div>
-            <div>
-              <div>Tanque B</div>
-              <paper-slider id="sliderB" class="verde" value="{{porcentajeTanqueB}}" max="100" editable></paper-slider>
-            </div>
-            <div>
-              <div>Tanque Final</div>
-              <paper-slider id="sliderC" class="azul" value="{{porcentajeTanqueFinal}}" max="100" editable></paper-slider>
-            </div>
-            <div>
-            </div>
+        <h2 class="page-title">Ingrese las propiedades de los tanques</h2>
+        <iron-grid>
+          <div class="s12">
+          <div class="m8 vertical-section">
+              <div class="s12">
+                <div><p class="titulo divider">Tanque A</p></div>
+                <div class="m6 s12">
+                  <paper-input bind-value="{{alturaA}}" value="{{alturaA}}" label="Altura (h)"></paper-input>
+                  <paper-input bind-value="{{radioSTA}}" value="{{radioSTA}}" label="Radio de sección transversal"></paper-input>
+                  <paper-input bind-value="{{radioOA}}" value="{{radioOA}}" label="Radio de abertura"></paper-input>
+                  <p class="texto-pequeno">Porcentaje abertura llave:</p>
+                  <paper-slider style="width:100%" id="sliderA" class="rojo" value="{{porcentajeTanqueA}}" max="100" editable></paper-slider>
+                </div>
+                <div class="m6 s12">
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Área Sección Transversal:<p>
+                    <span class="s2">{{areaSTA}}</span>
+                  </div>
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Área de Abertura:<p>
+                    <span class="s2">{{areaOA}}</span>
+                  </div>
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Volumen Max:<p>
+                    <span class="s2">{{volumenMaxA}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="s12">
+                <div><p class="titulo divider">Tanque B</p></div>
+                <div class="m6 s12">
+                  <paper-input bind-value="{{alturaB}}" value="{{alturaB}}" label="Altura (h)"></paper-input>
+                  <paper-input bind-value="{{radioSTB}}" value="{{radioSTB}}" label="Radio de sección transversal"></paper-input>
+                  <paper-input bind-value="{{radioOB}}" value="{{radioOB}}" label="Radio de abertura"></paper-input>
+                  <p class="texto-pequeno">Porcentaje abertura llave:</p>
+                  <paper-slider style="width:100%" id="sliderB" class="verde" value="{{porcentajeTanqueB}}" max="100" editable></paper-slider>
+                </div>
+                <div class="m6 s12">
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Área Sección Transversal:<p>
+                    <span class="s2">{{areaSTB}}</span>
+                  </div>
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Área de Abertura:<p>
+                    <span class="s2">{{areaOB}}</span>
+                  </div>
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Volumen Max:<p>
+                    <span class="s2">{{volumenMaxB}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="s12">
+                <div><p class="titulo divider">Tanque C</p></div>
+                <div class="m6 s12">
+                 <paper-input bind-value="{{alturaC}}" value="{{alturaC}}" label="Altura (h)"></paper-input>
+                  <paper-input bind-value="{{radioSTC}}" value="{{radioSTC}}" label="Radio de sección transversal"></paper-input>
+                  <paper-input bind-value="{{radioOC}}" value="{{radioOC}}" label="Radio de abertura"></paper-input>
+                  <p class="texto-pequeno">Porcentaje abertura llave:</p>
+                  <paper-slider style="width:100%" id="sliderC" class="azul" value="{{porcentajeTanqueFinal}}" max="100" editable></paper-slider>
+                </div>
+                <div class="m6 s12">
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Área Sección Transversal:<p>
+                    <span class="s2">{{areaSTC}}</span>
+                  </div>
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Área de Abertura:<p>
+                    <span class="s2">{{areaOC}}</span>
+                  </div>
+                  <div style="height: 25px; margin-top: 32px;">
+                    <p class="s10 no-spaces texto-pequeno">Volumen Max:<p>
+                    <span class="s2">{{volumenMaxC}}</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="m4">
+            <img style="width: 100%" src="../../images/tanques.jpg">
+          </div>
         </div>
+        <iron-grid>
         <div style="display: block;height: 50px;">
-          <paper-button tabindex="0" on-click="toResultado" raised class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+          <paper-button tabindex="0" on-click="obtenerResultados" raised class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
         </div>
       </paper-material>
       <paper-material elevation="1">
@@ -86,19 +159,112 @@
         properties: {
           porcentajeTanqueA: {
             type: Number,
-            // reflectToAttribute: true,
+            value: 100,
+            notify: true,
+            observer: "radioOAChanged"
+          },
+          alturaA: {
+            type: Number,
+            notify: true,
+            value: 13.2,
+            observer: "alturaAChanged"
+          },
+          radioSTA: {
+            type: Number,
+            notify: true,
+            value: 8.5,
+            observer: "radioSTAChanged"
+          },
+          radioOA: {
+            type: Number,
+            notify: true,
+            value: 0.635,
+            observer: "radioOAChanged"
+          },
+          areaSTA: {
+            type: Number,
+            notify: true
+          },
+          areaOA: {
+            type: Number,
+            notify: true
+          },
+          volumenMaxA: {
+            type: Number,
             notify: true
           },
           porcentajeTanqueB: {
             type: Number,
-            // reflectToAttribute: true,
+            value: 100,
+            notify: true,
+            observer: "radioOBChanged"
+          },
+          alturaB: {
+            type: Number,
+            notify: true,
+            value: 15,
+            observer: "alturaBChanged"
+          },
+          radioSTB: {
+            type: Number,
+            notify: true,
+            value: 8.5,
+            observer: "radioSTBChanged"
+          },
+          radioOB: {
+            type: Number,
+            notify: true,
+            value: 0.635,
+            observer: "radioOBChanged"
+          },
+          areaSTB: {
+            type: Number,
+            notify: true
+          },
+          areaOB: {
+            type: Number,
+            notify: true
+          },
+          volumenMaxB: {
+            type: Number,
             notify: true
           },
           porcentajeTanqueFinal: {
             type: Number,
-            // reflectToAttribute: true,
+            value: 100,
+            notify: true,
+            observer: "radioOCChanged"
+          },
+          alturaC: {
+            type: Number,
+            notify: true,
+            value: 13,
+            observer: "alturaCChanged"
+          },
+          radioSTC: {
+            type: Number,
+            notify: true,
+            value: 10,
+            observer: "radioSTCChanged"
+          },
+          radioOC: {
+            type: Number,
+            notify: true,
+            value: 0.45,
+            observer: "radioOCChanged"
+          },
+          areaSTC: {
+            type: Number,
             notify: true
-          }
+          },
+          areaOC: {
+            type: Number,
+            notify: true
+          },
+          volumenMaxC: {
+            type: Number,
+            notify: true
+          },
         },
         ready: function(){
           var self = this;
@@ -112,9 +278,77 @@
             self.porcentajeTanqueFinal = self.$.sliderC.value;
           });
         },
-        toResultado: function(){
-          document.querySelector('#pageInit').obtenerResultado();
-          document.querySelector('#pageInit').redirect("/resultado");
+        obtenerResultados: function(){
+          var gravedad = 980;
+          var kA = 2 * Math.sqrt(this.volumenMaxA);
+          var tVaciadoA = kA / (this.areaOA * Math.sqrt(2 * gravedad / this.areaSTA));
+          tVaciadoA = tVaciadoA.toFixed(2); 
+
+          var arrayA = [];
+          for (var t = 0; t < Math.round(tVaciadoA); t++) {
+              var invt = (-this.areaOA*Math.sqrt(2*gravedad/this.areaSTA)/2)*t+kA/2;
+              var vt = Math.pow(invt,2);
+              arrayA.push([t,vt]);
+          }
+
+          var kB = 2 * Math.sqrt(this.volumenMaxB);
+          var tVaciadoB = kB / (this.areaOB * Math.sqrt(2 * gravedad / this.areaSTB));
+          tVaciadoB = tVaciadoB.toFixed(2); 
+
+          var arrayB = [];
+          for (var t = 0; t < Math.round(tVaciadoB); t++) {
+              var invt = (-this.areaOB*Math.sqrt(2*gravedad/this.areaSTB)/2)*t+kB/2;
+              var vt = Math.pow(invt,2);
+              arrayB.push([t,vt]);
+          }
+
+          var pageInit = document.querySelector('#pageInit');
+          pageInit.vaciadoA = tVaciadoA;
+          pageInit.datosGraficaA = arrayA;
+          pageInit.vaciadoB = tVaciadoB;
+          pageInit.datosGraficaB = arrayB;
+          pageInit.llenadoC = tVaciadoA;
+          pageInit.datosGraficaC = arrayA;
+          pageInit.redirect("resultado");
+        },
+        radioSTAChanged: function(){
+          this.areaSTA = Math.PI * Math.pow(this.radioSTA,2);
+          this.areaSTA = this.areaSTA.toFixed(2);
+          this.alturaAChanged();
+        },
+        radioOAChanged: function(){
+          this.areaOA = Math.PI * Math.pow(this.radioOA,2) * this.porcentajeTanqueA / 100;
+          this.areaOA = this.areaOA.toFixed(2);
+        },
+        radioSTBChanged: function(){
+          this.areaSTB = Math.PI * Math.pow(this.radioSTB,2);
+          this.areaSTB = this.areaSTB.toFixed(2);
+          this.alturaBChanged();
+        },
+        radioOBChanged: function(){
+          this.areaOB = Math.PI * Math.pow(this.radioOB,2) * this.porcentajeTanqueB / 100;
+          this.areaOB = this.areaOB.toFixed(2);
+        },
+        radioSTCChanged: function(){
+          this.areaSTC = Math.PI * Math.pow(this.radioSTC,2);
+          this.areaSTC = this.areaSTC.toFixed(2);
+        },
+        radioOCChanged: function(){
+          this.areaOC = Math.PI * Math.pow(this.radioOC,2) * this.porcentajeTanqueFinal / 100;
+          this.areaOC = this.areaOC.toFixed(2);
+          this.alturaCChanged();
+        },
+        alturaAChanged: function(){
+          this.volumenMaxA = this.alturaA * this.areaSTA;
+          this.volumenMaxA = this.volumenMaxA.toFixed(2);
+        },
+        alturaBChanged: function(){
+          this.volumenMaxB = this.alturaB * this.areaSTB;
+          this.volumenMaxB = this.volumenMaxB.toFixed(2);
+        },
+        alturaCChanged: function(){
+          this.volumenMaxC = this.alturaC * this.areaSTC;
+          this.volumenMaxC = this.volumenMaxC.toFixed(2);
         }
       });
     })();

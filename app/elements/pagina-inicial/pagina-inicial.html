@@ -13,26 +13,22 @@
       <paper-scroll-header-panel drawer fixed>
 
         <!-- Drawer Toolbar -->
-        <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title">Menu</span>
+        <paper-toolbar class="green" id="drawerToolbar">
+          <span class="paper-font-title">Menú</span>
         </paper-toolbar>
 
         <!-- Drawer Content -->
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="/" on-click="onDataRouteClick">
+          <a data-route="home" href="#" on-click="toRoute">
             <iron-icon icon="home"></iron-icon>
-            <span>Home</span>
+            <span>Ingreso Datos</span>
           </a>
 
-          <a data-route="users" href="/users" on-click="onDataRouteClick">
+          <a data-route="resultado" href="#" on-click="toRoute">
             <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
+            <span>Resultado</span>
           </a>
 
-          <a data-route="contact" href="/contact" on-click="onDataRouteClick">
-            <iron-icon icon="mail"></iron-icon>
-            <span>Contact</span>
-          </a>
         </paper-menu>
       </paper-scroll-header-panel>
 
@@ -69,7 +65,7 @@
             </section>
 
             <section data-route="resultado">
-              <my-resultado id="paginaResultado" resultado="{{resultado}}"></my-resultado>
+              <my-resultado id="paginaResultado" vaciado-a="{{vaciadoA}}" datos-grafica-a="{{datosGraficaA}}" vaciado-b="{{vaciadoB}}" datos-grafica-b="{{datosGraficaB}}" llenado-c="{{llenadoC}}" datos-grafica-c="{{datosGraficaC}}" resultado="{{resultado}}"></my-resultado>
             </section>
 
             <section data-route="users">
@@ -111,25 +107,59 @@
         is: 'pagina-inicial',
 
         properties: {
-	    	resultado: {
-	    		type: Number,
-	          	value: 0,
-	          	notify: true
-	    	}
+          vaciadoA: {
+            type: Number,
+            notify: true
+          },
+          datosGraficaA: {
+            type: Array
+          },
+          vaciadoB: {
+            type: Number,
+            notify: true
+          },
+          datosGraficaB: {
+            type: Array
+          },
+          llenadoC: {
+            type: Number,
+            notify: true
+          },
+          datosGraficaC: {
+            type: Array
+          }
         },
-        obtenerResultado: function(){
-        	this.resultado = this.porcentajeA + this.porcentajeB + this.porcentajeFinal;
+        ready: function(){
+          app.route = "home";
+        },
+        toRoute: function(e){
+          var drawerPanel = document.querySelector('#paperDrawerPanel');
+          if (drawerPanel.narrow) {
+            drawerPanel.closeDrawer();
+          }
+          var ruta = this.getParam(e,"data-route");
+          this.redirect(ruta);
         },
         redirect: function(ruta){
-        	if(ruta == "/resultado"){
+        	if(ruta == "resultado"){
 	        	this.entryAnimation = 'slide-from-right-animation';
 	        	this.exitAnimation = 'slide-left-animation';
         	}
-        	else if(ruta == "/"){
+        	else if(ruta == "home"){
         		this.entryAnimation = 'slide-from-left-animation';
         		this.exitAnimation = 'slide-right-animation';
         	}
-        	page.redirect(ruta);
+        	app.route = ruta;
+          this.$.paginaResultado.$.graficoc.drawChart();
+          this.$.paginaResultado.$.graficob.drawChart();
+          this.$.paginaResultado.$.graficoa.drawChart();
+        },
+        getParam: function(e,atributo){
+          var target = e.target;
+            while (!target.getAttribute(atributo)) {
+              target = target.parentNode;
+            }
+            return target.getAttribute(atributo);
         }
       });
     })();
