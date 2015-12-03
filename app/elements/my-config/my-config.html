@@ -302,13 +302,45 @@
               arrayB.push([t,vt]);
           }
 
+          var kC = 175.92 * this.porcentajeTanqueA + 66.64 * this.porcentajeTanqueB -51.22 * this.porcentajeTanqueFinal;
+          var tau = 2.76 * this.porcentajeTanqueA - 0.08 * this.porcentajeTanqueB -0.36 * this.porcentajeTanqueFinal;
+
+          var arrayC = [];
+          for (var t = 0; t < 4*tau; t++) {
+              var vt = kC * (1 - Math.exp(-t/tau));
+              arrayC.push([t,vt]);
+          }
+
           var pageInit = document.querySelector('#pageInit');
+          var ref = -tau * Math.log(Math.abs(1 - 4084/kC));
+          if (ref < 0){
+            pageInit.reflleno = false;
+          }
+          else{
+            pageInit.reflleno = true;
+          }
+          var max = -tau * Math.log(Math.abs(1 - 5969/kC));
+          if (max < 0){
+            pageInit.maxlleno = false;
+          }
+          else{
+            pageInit.maxlleno = true;
+          }
+          ref = ref.toFixed(2); 
+          max = max.toFixed(2); 
+          kC = kC.toFixed(2); 
+          tau = tau.toFixed(2); 
+
           pageInit.vaciadoA = tVaciadoA;
           pageInit.datosGraficaA = arrayA;
           pageInit.vaciadoB = tVaciadoB;
           pageInit.datosGraficaB = arrayB;
-          pageInit.llenadoC = tVaciadoA;
-          pageInit.datosGraficaC = arrayA;
+          pageInit.llenadoC = 4*tau;
+          pageInit.datosGraficaC = arrayC;
+          pageInit.kc = kC;
+          pageInit.tau = tau;
+          pageInit.max = max;
+          pageInit.ref = ref;
           pageInit.redirect("resultado");
         },
         radioSTAChanged: function(){

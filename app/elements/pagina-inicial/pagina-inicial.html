@@ -65,7 +65,7 @@
             </section>
 
             <section data-route="resultado">
-              <my-resultado id="paginaResultado" vaciado-a="{{vaciadoA}}" datos-grafica-a="{{datosGraficaA}}" vaciado-b="{{vaciadoB}}" datos-grafica-b="{{datosGraficaB}}" llenado-c="{{llenadoC}}" datos-grafica-c="{{datosGraficaC}}" resultado="{{resultado}}"></my-resultado>
+              <my-resultado id="paginaResultado" vaciado-a="{{vaciadoA}}" datos-grafica-a="{{datosGraficaA}}" vaciado-b="{{vaciadoB}}" datos-grafica-b="{{datosGraficaB}}" llenado-c="{{llenadoC}}" datos-grafica-c="{{datosGraficaC}}" resultado="{{resultado}}" kc="{{kc}}" tau="{{tau}}" ref="{{ref}}" max="{{max}}" reflleno="{{reflleno}}" maxlleno="{{maxlleno}}"></my-resultado>
             </section>
 
             <section data-route="users">
@@ -127,7 +127,31 @@
           },
           datosGraficaC: {
             type: Array
-          }
+          },
+          ref: {
+            type: Number,
+            notify: true
+          },
+          max: {
+            type: Number,
+            notify: true
+          },
+          tau: {
+            type: Number,
+            notify: true
+          },
+          kc: {
+            type: Number,
+            notify: true
+          },
+          reflleno: {
+            type: Boolean,
+            value: true
+          },
+          maxlleno: {
+            type: Boolean,
+            value: true
+          },
         },
         ready: function(){
           app.route = "home";

@@ -42,10 +42,36 @@
 	     			<tbody>
 	     				<tr>
 	     					<td>
-						        <h4>El tiempo que tardará el tanque C en llenarse es:</h4>
+						        <h4>El tiempo que tardará el tanque C en estabilizarse es:</h4>
 					    	</td>
 					    	<td>
 					    		<span>{{llenadoC}}</span>seg
+					    	</td>
+	     				</tr>
+	     				<tr>
+	     					<td>
+						        <h4>El tiempo que tardará el tanque C en llegar a Ref Lleno:</h4>
+					    	</td>
+					    	<td>
+					    		<template is="dom-if" if="{{reflleno}}">
+					    			<span>{{ref}}</span>seg
+					    		</template>
+					    		<template is="dom-if" if="{{!reflleno}}">
+					    			<span>Nunca</span>
+					    		</template>
+					    	</td>
+	     				</tr>
+	     				<tr>
+	     					<td>
+						        <h4>El tiempo que tardará el tanque C en llegar a Max es:</h4>
+					    	</td>
+					    	<td>
+					    		<template is="dom-if" if="{{maxlleno}}">
+					    			<span>{{max}}</span>seg
+					    		</template>
+					    		<template is="dom-if" if="{{!maxlleno}}">
+					    			<span>Nunca</span>
+					    		</template>
 					    	</td>
 	     				</tr>
 	     				<tr>
@@ -62,6 +88,14 @@
 					    	</td>
 					    	<td>
 					    		<span>{{vaciadoB}}</span>seg
+					    	</td>
+	     				</tr>
+	     				<tr>
+	     					<td>
+						        <h4>La función de transferencia del tanque C es:</h4>
+					    	</td>
+					    	<td>
+					    		<span style="font-size:17px">T(s) = <span style="font-size:17px">{{kc}}</span style="font-size:17px">[1-e^(-t/<span style="font-size:17px">{{tau}}</span>)]</span>
 					    	</td>
 	     				</tr>
 			    	</tbody>
